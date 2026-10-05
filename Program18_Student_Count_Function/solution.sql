@@ -1,26 +1,15 @@
-USE CollegeDB;
-
-DROP FUNCTION IF EXISTS CountStudentsByDepartment;
-
-DELIMITER $$
-
-CREATE FUNCTION CountStudentsByDepartment(
-    p_department_id INT
-)
-RETURNS INT
-DETERMINISTIC
-READS SQL DATA
+use collegeDBbca;
+DELIMITER//
+CREATE FUNCTION countstudent(p_departmentID int)
+     RETURNS INT
+     DETERMINSTIC
 BEGIN
-
-    DECLARE student_count INT;
-
-    -- Count students belonging to the given department
-
-    -- Return the count
-
-END $$
-
-DELIMITER ;
-
--- Test
-SELECT CountStudentsByDepartment(1) AS StudentCount;
+     DECLARE student_count INT;
+     SELECT COUNT(*)
+     INTO student_count
+     FROM student
+     WHERE departmentID = p departmentID;
+     RETURN student_count;
+END//
+DELIMITER;
+SELECT countstudent(10)AS totalstudents;
